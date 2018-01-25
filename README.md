@@ -1,4 +1,4 @@
-# Cisco Spark Widgets
+# Cisco Spark Widgets Samples
 
 If you're new to Widgets, we recommend you take the [Space Widget demo](https://code.s4d.io/widget-space/latest/demo/index.html)
 
