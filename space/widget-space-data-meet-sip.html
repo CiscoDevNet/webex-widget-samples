@@ -10,8 +10,8 @@
       id="space"        
       data-toggle="ciscospark-space"
       data-initial-activity="meet"
-      data-access-token="ACCESS_TOKEN"
-      data-to-person-email="roomkit@sparkdemos.com" />
+      data-access-token='{{.Env.SPARK_TOKEN}}'
+      data-to-person-email='roomkit@sparkdemos.com' />
   
   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
 </body>

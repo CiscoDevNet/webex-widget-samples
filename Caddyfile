@@ -1,0 +1,10 @@
+:9000 {
+    templates
+    browse
+}
+
+:9443 {
+    tls self_signed
+    templates
+    browse
+}

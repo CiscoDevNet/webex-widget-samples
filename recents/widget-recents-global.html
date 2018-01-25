@@ -19,7 +19,7 @@
     var widgetElement = document.getElementById('recents');
     // Initialize a new widget
     var widget = ciscospark.widget(widgetElement).recentsWidget({
-      accessToken: "ACCESS_TOKEN",
+      accessToken: '{{.Env.SPARK_TOKEN}}',
       onEvent: callback
     });
 

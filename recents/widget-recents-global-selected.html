@@ -14,7 +14,7 @@
 
     // Initialize the Recents widget
     ciscospark.widget(widgetElement).recentsWidget({
-      accessToken: 'ACCESS_TOKEN'
+      accessToken: '{{.Env.SPARK_TOKEN}}'
     });
 
     // Register events
