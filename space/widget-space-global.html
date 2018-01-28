@@ -17,7 +17,7 @@
     // Init a new widget
     var widget = ciscospark.widget(widgetElement).spaceWidget({
       accessToken: '{{.Env.SPARK_TOKEN}}',
-      toPersonEmail: 'CiscoDevNet@sparkbot.io'
+      toPersonEmail: '{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@sparkbot.io{{end}}'
     });
   </script>
 
