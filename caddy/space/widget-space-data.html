@@ -14,13 +14,14 @@
 </head>
 <body>
 
-  <div
-      id="space"        
-      data-toggle="ciscospark-space"
-      data-initial-activity="message"
-      data-access-token='{{.Env.SPARK_TOKEN}}'
-      data-to-person-email='{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@sparkbot.io{{end}}' />
-      
+  <div style="width: 750px; height: 500px;" 
+    id="space"        
+    data-toggle="ciscospark-space"
+    data-initial-activity="message"
+    data-access-token='{{.Env.SPARK_TOKEN}}'
+    data-to-person-email='{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@sparkbot.io{{end}}' 
+    />
+    
       <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
 </body>
 
