@@ -20,10 +20,6 @@
       data-initial-activity="message"
       data-access-token='{{.Env.SPARK_TOKEN}}'
       data-to-person-email='{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@sparkbot.io{{end}}' />
-  
-      <script>
-        window.ciscoSparkEvents = [];
-      </script>
       
       <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
 </body>
