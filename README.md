@@ -15,8 +15,8 @@ Download caddy: https://caddyserver.com/download, and add the command to your pa
 Run the commands below from bash shell, and access the samples at ':9000/'
 
 ```bash
-git clone https://github.com/CiscoDevNet/widget-samples
-cd widget-samples
+git clone https://github.com/CiscoDevNet/webex-widget-samples
+cd webex-widget-samples
 cd caddy
 # Starts caddy with a Cisco Webex Teams API access token (check https://developer.webex.com)
 ACCESS_TOKEN=access_token  caddy
