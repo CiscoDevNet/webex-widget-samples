@@ -8,7 +8,7 @@ If you're new to Widgets, we recommend you try the [Space Widget demo](https://c
 
 ## Tip to dynamically inject Cisco Webex Teams access tokens
 
-Using [Caddy template actions](https://caddyserver.com/docs/template-actions), it's possible to customize the samples by injecting your own token (with the `SPARK_TOKEN` env variable) and query parameters on the URL (`?roomId=`, `?sip=`, `?email=`). Read instructions below.
+Using [Caddy template actions](https://caddyserver.com/docs/template-actions), it's possible to customize the samples by injecting your own token (with the `ACCESS_TOKEN` env variable) and query parameters on the URL (`?roomId=`, `?sip=`, `?email=`). Read instructions below.
 
 Download caddy: https://caddyserver.com/download, and add the command to your path.
 
@@ -19,7 +19,7 @@ git clone https://github.com/CiscoDevNet/widget-samples
 cd widget-samples
 cd caddy
 # Starts caddy with a Cisco Webex Teams API access token (check https://developer.webex.com)
-SPARK_TOKEN=access_token  caddy
+ACCESS_TOKEN=access_token  caddy
 ```
 
 Examples:
@@ -30,4 +30,4 @@ Examples:
 - https://localhost:9443/space/widget-space-data-meet-sip.html
 - https://localhost:9443/space/widget-space-data-meet-sip.html?sip=roomkit@sparkdemos.com
 - http://localhost:9000/space/widget-space-data-spaceid.html?roomId=Y2lzY29zcGFyazovL3VzL1JPT00vNWU5YzM3YTAtMDFkOC0xMWU4LTg1NDgtMDFiYmYxOTZlZDNm
-- http://localhost:9000/space/widget-space-data.html?email=CiscoDevNet@sparkbot.io
+- http://localhost:9000/space/widget-space-data.html?email=CiscoDevNet@webex.bot

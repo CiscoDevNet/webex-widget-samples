@@ -28,13 +28,13 @@
 
   <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
   <script>
-    sparkToken = '{{.Env.SPARK_TOKEN}}'
+    accessToken = '{{.Env.ACCESS_TOKEN}}'
     var widgetElement = document.getElementById('recents');
     var widgetElement2 = document.getElementById('space');
 
     // Init a new widget
     ciscospark.widget(widgetElement).recentsWidget({
-      accessToken: sparkToken,
+      accessToken: accessToken,
       onEvent: callback
     });
 
@@ -60,7 +60,7 @@
 
       // Init a new widget
       ciscospark.widget(widgetElement2).spaceWidget({
-        accessToken: sparkToken,
+        accessToken: accessToken,
         spaceId: selectedRoom
       });
     }

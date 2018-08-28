@@ -18,8 +18,8 @@
     id="space"        
     data-toggle="ciscospark-space"
     data-initial-activity="message"
-    data-access-token='{{.Env.SPARK_TOKEN}}'
-    data-to-person-email='{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@sparkbot.io{{end}}' 
+    data-access-token='{{.Env.ACCESS_TOKEN}}'
+    data-to-person-email='{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@webex.bot{{end}}' 
     />
     
       <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>

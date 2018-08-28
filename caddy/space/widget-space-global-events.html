@@ -33,7 +33,7 @@
     var widgetElement = document.getElementById('space');
 
     var widget = ciscospark.widget(widgetElement).spaceWidget({
-      accessToken: '{{.Env.SPARK_TOKEN}}',
+      accessToken: '{{.Env.ACCESS_TOKEN}}',
       spaceId: '{{.URL.Query.Get "roomId"}}',
       onEvent: callback
     });
