@@ -2,34 +2,36 @@
 <html>
 
 <head>
-  <meta charset="utf8">
+   <meta charset="utf8">
 
-  <!-- no cache directives for Caddy templating to work consistently -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <!-- end of no cache directives -->
+   <!-- no cache directives for Caddy templating to work consistently -->
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+   <meta http-equiv="Pragma" content="no-cache" />
+   <meta http-equiv="Expires" content="0" />
+   <!-- end of no cache directives -->
 
-  <title>Space Widget</title>
-  <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
+   <title>Space Widget</title>
+   <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
 </head>
 
 <body>
 
-  <div style="width: 750px; height: 500px;" 
-    id="space" 
-    />
+   <div style="width: 750px; height: 500px;" id="space" />
 
-  <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
-  <script>
-    var widgetElement = document.getElementById('space');
+   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
+   <script>
 
-    // Init a new widget
-    var widget = ciscospark.widget(widgetElement).spaceWidget({
-      accessToken: '{{.Env.ACCESS_TOKEN}}',
-      toPersonEmail: '{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@webex.bot{{end}}'
-    });
-  </script>
+      // Inject a new 'Space' widget with selected room
+      const widgetElement = document.getElementById('space');
+      ciscospark.widget(widgetElement).spaceWidget({
+         accessToken: '{{.Env.ACCESS_TOKEN}}',
+         destinationType: "email",
+         destinationId: '{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@webex.bot{{end}}',
+         activities: { "files": true, "message": true, "people": true },
+         initialActivity: 'message'
+      });
+
+   </script>
 
 </body>
 

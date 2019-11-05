@@ -14,13 +14,17 @@
 
   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
   <script>
-    var widgetElement = document.getElementById('space');
 
-    // Init a new widget
-    var widget = ciscospark.widget(widgetElement).spaceWidget({
-      accessToken: "PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN",
-      toPersonEmail: "CiscoDevNet@webex.bot"
-    });
+     // Inject a new 'Space' widget with selected room
+     const widgetElement = document.getElementById('space');
+      ciscospark.widget(widgetElement).spaceWidget({
+         accessToken: 'PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN',
+         destinationType: "email",
+         destinationId: 'CiscoDevNet@webex.bot',
+         activities: { "files": true, "message": true, "people": true },
+         initialActivity: 'message'
+      });
+
   </script>
 
 </body>

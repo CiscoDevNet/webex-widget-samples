@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf8">
+   <meta charset="utf8">
 
-  <!-- no cache directives for Caddy templating to work consistently -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <!-- end of no cache directives -->
+   <!-- no cache directives for Caddy templating to work consistently -->
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+   <meta http-equiv="Pragma" content="no-cache" />
+   <meta http-equiv="Expires" content="0" />
+   <!-- end of no cache directives -->
 
-  <title>Recents Widget</title>
-  <link rel="stylesheet" href="https://code.s4d.io/widget-recents/production/main.css">
-  <style type="text/css">
-    .toast {
-      font-family: "Source Sans Pro", Hkelvetica, sans-serif;
-      font-size: 120%;
-    }
-  </style>
+   <title>Recents Widget</title>
+   <link rel="stylesheet" href="https://code.s4d.io/widget-recents/production/main.css">
+   <style type="text/css">
+      .toast {
+         font-family: "Source Sans Pro", Hkelvetica, sans-serif;
+         font-size: 120%;
+      }
+   </style>
 </head>
+
 <body>
 
-  <div style="width: 300px; height: 500px;" 
-    id="recents" 
-    />
+   <div style="width: 300px; height: 500px;" id="recents" />
 
-  <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
-  <script>
-    var widgetElement = document.getElementById('recents');
-    // Initialize a new widget
-    var widget = ciscospark.widget(widgetElement).recentsWidget({
-      accessToken: "{{.Env.ACCESS_TOKEN}}",
-      onEvent: callback
-    });
+   <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
+   <script>
 
-    function callback(type, event) {
-      if (type === 'rooms:selected') {
-        console.log("room " + event.data.id + " was selected");
+      // Initialize a new widget
+      const widgetElement = document.getElementById('recents');
+      ciscospark.widget(widgetElement).recentsWidget({
+         accessToken: "{{.Env.ACCESS_TOKEN}}",
+         onEvent: callback
+      });
+
+      function callback(type, event) {
+         if (type === 'rooms:selected') {
+            console.log("room " + event.data.id + " was selected");
+         }
       }
-    }
-  </script>
+
+   </script>
 
 </body>
+
 </html>

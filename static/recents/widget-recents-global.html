@@ -12,6 +12,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div style="width: 300px; height: 500px;" 
@@ -20,9 +21,10 @@
 
   <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
   <script>
-    var widgetElement = document.getElementById('recents');
+
     // Initialize a new widget
-    var widget = ciscospark.widget(widgetElement).recentsWidget({
+    const widgetElement = document.getElementById('recents');
+    ciscospark.widget(widgetElement).recentsWidget({
       accessToken: "PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN",
       onEvent: callback
     });

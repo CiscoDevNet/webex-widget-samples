@@ -14,9 +14,9 @@
 
   <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
   <script>
-    var widgetElement = document.getElementById('recents');
-
+    
     // Initialize the Recents widget
+    const widgetElement = document.getElementById('recents');
     ciscospark.widget(widgetElement).recentsWidget({
       accessToken: "PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN"
     });
@@ -25,6 +25,7 @@
     ciscospark.widget(widgetElement).on("rooms:selected", function(event) {
         console.log("room " + event.data.id + " was selected");
     });
+    
   </script>
 
 </body>

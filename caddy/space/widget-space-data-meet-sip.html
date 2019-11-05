@@ -12,14 +12,15 @@
   <title>Space Widget</title>
   <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
 </head>
+
 <body>
 
-  <div style="width: 750px; height: 500px;"
-    id="space"        
-    data-toggle="ciscospark-space"
-    data-initial-activity="meet"
+  <div style="width: 750px; height: 500px;"     
     data-access-token='{{.Env.ACCESS_TOKEN}}'
-    data-to-person-email='{{if .URL.Query.Get "sip"}}{{.URL.Query.Get "sip"}}{{else}}roomkit@sparkdemos.com{{end}}' 
+    data-toggle="ciscospark-space"
+    data-destination-type="sip"
+    data-destination-id='{{if .URL.Query.Get "sip"}}{{.URL.Query.Get "sip"}}{{else}}havnen@expressway.dk{{end}}' 
+    data-initial-activity="meet"
     />
 
   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>

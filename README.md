@@ -28,6 +28,11 @@ Examples:
 - http://localhost:9000/recents/widget-recents-global.html
 - http://localhost:9000/together/both-recents-and-space.html
 - https://localhost:9443/space/widget-space-data-meet-sip.html
-- https://localhost:9443/space/widget-space-data-meet-sip.html?sip=roomkit@sparkdemos.com
+- https://localhost:9443/space/widget-space-data-meet-sip.html?sip=havnen@expressway.dk
 - http://localhost:9000/space/widget-space-data-spaceid.html?roomId=Y2lzY29zcGFyazovL3VzL1JPT00vNWU5YzM3YTAtMDFkOC0xMWU4LTg1NDgtMDFiYmYxOTZlZDNm
 - http://localhost:9000/space/widget-space-data.html?email=CiscoDevNet@webex.bot
+
+
+## Quick start on Glitch
+
+Click [![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/CiscoDevNet/webex-widget-samples)

@@ -22,20 +22,26 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script>
-    var widgetElement = document.getElementById('space');
 
-    var widget = ciscospark.widget(widgetElement).spaceWidget({
-      accessToken: "PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN",
-      spaceId: "SPACE_ID",
+    // Inject a new 'Space' widget with selected room
+    const widgetElement = document.getElementById('space');
+    ciscospark.widget(widgetElement).spaceWidget({
+      accessToken: 'PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN',
+      destinationType: "email",
+      destinationId: 'CiscoDevNet@webex.bot',
+      activities: { "files": true, "meet": true, "message": true, "people": true },
+      initialActivity: 'message',
+      secondaryActivitiesFullWidth: false,
       onEvent: callback
-    });
+   });
 
-    function callback(type, event) {
+   function callback(type, event) {
       if (type !== "rooms:read") {
-        console.log("new event: " + type);
-        toastr.info('Event Received', type);
+         console.log("new event: " + type);
+         toastr.info('Event Received', type);
       }
-    }
+   }
+
   </script>
 
 </body>

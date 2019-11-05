@@ -1,0 +1,8 @@
+# CHANGES
+
+- **Nov 5th, 2019**
+
+* updated examples with latest 'Space' Widget, including 'destinationType' and 'destinationId' attributes
+* enhanced together examples, better coding style
+* updated SIP examples
+* added "deploy on glitch" link in README
