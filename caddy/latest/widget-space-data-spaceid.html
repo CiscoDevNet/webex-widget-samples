@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf8">
+
+   <!-- no cache directives for Caddy templating to work consistently -->
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+   <meta http-equiv="Pragma" content="no-cache" />
+   <meta http-equiv="Expires" content="0" />
+   <!-- end of no cache directives -->
+
+   <title>Space Widget</title>
+   <link rel="stylesheet" href="https://code.s4d.io/widget-space/latest/main.css">
+</head>
+
+<body>
+
+   <div style="width: 750px; height: 500px;"
+      data-access-token='{{.Env.ACCESS_TOKEN}}'
+      data-toggle="ciscospark-space" 
+      data-destination-type="spaceId" 
+      data-destination-id='{{.URL.Query.Get "roomId"}}'
+      data-initial-activity="message" 
+   />
+
+   <script src="https://code.s4d.io/widget-space/latest/bundle.js"></script>
+</body>
+
+</html>
