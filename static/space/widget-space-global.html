@@ -2,30 +2,35 @@
 <html>
 
 <head>
-  <meta charset="utf8">
+   <meta charset="utf8">
 
-  <title>Space Widget</title>
-  <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
+   <title>Space Widget</title>
+   <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
+
+   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
 </head>
 
 <body>
 
-  <div id="space" style="width: 750px; height: 500px;" />
+   <div id="space" style="width: 750px; height: 500px;" />
 
-  <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
-  <script>
+   <script>
 
-     // Inject a new 'Space' widget with selected room
-     const widgetElement = document.getElementById('space');
-      ciscospark.widget(widgetElement).spaceWidget({
-         accessToken: 'PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN',
+      // Use specified token if set as a query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token') || 'PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN';
+
+      // Inject a new 'Space' widget with selected room
+      const widgetElement = document.getElementById('space');
+      webex.widget(widgetElement).spaceWidget({
+         accessToken: token,
          destinationType: "email",
-         destinationId: 'CiscoDevNet@webex.bot',
+         destinationId: 'toEnglish@webex.bot',
          activities: { "files": true, "message": true, "people": true },
          initialActivity: 'message'
       });
 
-  </script>
+   </script>
 
 </body>
 

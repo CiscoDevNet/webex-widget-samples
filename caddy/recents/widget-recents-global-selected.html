@@ -12,23 +12,23 @@
 
    <title>Recents Widget</title>
    <link rel="stylesheet" href="https://code.s4d.io/widget-recents/production/main.css">
+   <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
 </head>
 
 <body>
 
    <div style="width: 300px; height: 500px;" id="recents" />
 
-   <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
    <script>
 
       // Initialize the Recents widget
       const widgetElement = document.getElementById('recents');
-      ciscospark.widget(widgetElement).recentsWidget({
+      webex.widget(widgetElement).recentsWidget({
          accessToken: "{{.Env.ACCESS_TOKEN}}"
       });
 
       // Register events
-      ciscospark.widget(widgetElement).on("rooms:selected", function (event) {
+      webex.widget(widgetElement).on("rooms:selected", function (event) {
          console.log("room " + event.data.id + " was selected");
       });
    </script>

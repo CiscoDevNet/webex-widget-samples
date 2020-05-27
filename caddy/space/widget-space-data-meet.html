@@ -12,19 +12,19 @@
 
    <title>Space Widget</title>
    <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
+   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
+
 </head>
 
 <body>
 
-   <div style="width: 750px; height: 500px;"
-      data-access-token='{{.Env.ACCESS_TOKEN}}'
-      data-toggle="ciscospark-space" 
+   <div style="width: 750px; height: 500px;" 
+      data-access-token='{{.Env.ACCESS_TOKEN}}' 
+      data-toggle="webex-space"
       data-destination-type="email"
-      data-destination-id='{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@webex.bot{{end}}'
-      data-initial-activity="meet"
-   />
+      data-destination-id='{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}toEnglish@webexx.bot{{end}}'
+      data-initial-activity="meet" />
 
-   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
 </body>
 
 </html>

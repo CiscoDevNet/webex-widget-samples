@@ -7,6 +7,9 @@
    <title>Better Together: Recents and Space</title>
    <link rel="stylesheet" href="https://code.s4d.io/widget-recents/production/main.css">
    <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
+
+   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
+   <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
 </head>
 
 <body>
@@ -18,14 +21,15 @@
       <div id="space" style="width: 750px; height: 500px; margin-left: 300px" />
    </div>
 
-   <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
    <script>
-      accessToken = "PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN";
-      const recentsElement = document.getElementById('recents');
+      // Use specified token if set as a query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token') || 'PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN';
 
-      // Init a new widget
-      ciscospark.widget(recentsElement).recentsWidget({
-         accessToken: accessToken,
+      // Init the Recents widget
+      const recentsElement = document.getElementById('recents');
+      webex.widget(recentsElement).recentsWidget({
+         accessToken: token,
          onEvent: callback
       });
 
@@ -43,16 +47,18 @@
 
          // Remove existing 'Space' widget (if any)
          try {
-            ciscospark.widget(spaceElement).remove().then(function (removed) {
+            webex.widget(spaceElement).remove().then(function (removed) {
                if (removed) {
                   console.log('removed!');
                }
             })
-         } catch (err) { }
+         } catch (err) {
+            console.error('could not remove Space widget :-(, continuing...');
+         }
 
          // Inject a new 'Space' widget with selected room
-         ciscospark.widget(spaceElement).spaceWidget({
-            accessToken: accessToken,
+         webex.widget(spaceElement).spaceWidget({
+            accessToken: token,
             destinationType: "spaceId",
             destinationId: selectedRoom,
             activities: { "files": true, "meet": true, "message": true, "people": true },
@@ -63,8 +69,6 @@
       }
 
    </script>
-
-   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
 
 </body>
 

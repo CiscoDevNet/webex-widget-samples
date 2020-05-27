@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf8">
 
-  <title>Space Widget</title>
-  <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
+<head>
+   <meta charset="utf8">
+
+   <title>Space Widget</title>
+   <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
+
+   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
 </head>
 
 <body>
 
-   <div style="width: 750px; height: 500px;"
-      data-access-token='PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN'
-      data-toggle="ciscospark-space" 
-      data-destination-type="email"
-      data-destination-id='CiscoDevNet@webex.bot'
-      data-initial-activity="meet"
-   />
-  
-  <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
+   <div id='space' class="webexteams-widget" style="width: 750px; height: 500px;"
+      data-access-token='PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN' data-toggle='webex-space' data-destination-type="email"
+      data-destination-id='PASTE_ANOTHER_WEBEX_TEAMS_USER_EMAIL' data-initial-activity="meet" />
+
+   <script>
+      // Update token if set as a query parameter
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+
+      if (token) {
+         console.log('injecting token from query parameter...')
+         const widget = document.getElementById('space');
+         widget.setAttribute("data-access-token", token);
+      }
+   </script>
+
+   <script>
+      // Update email if set as a query parameter
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const email = urlParams.get('email');
+
+      if (token) {
+         console.log('injecting email from query parameter...')
+         const widget = document.getElementById('space');
+         widget.setAttribute("data-destination-id", email);
+      }
+   </script>
+
 </body>
+
 </html>

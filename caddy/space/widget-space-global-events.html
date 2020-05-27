@@ -19,20 +19,21 @@
          font-size: 120%;
       }
    </style>
+
+   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 
 <body>
 
    <div style="width: 750px; height: 500px;" id="space" />
 
-   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
-   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
    <script>
       const widgetElement = document.getElementById('space');
 
       // Inject a new 'Space' widget with selected room
-      ciscospark.widget(widgetElement).spaceWidget({
+      webex.widget(widgetElement).spaceWidget({
          accessToken: '{{.Env.ACCESS_TOKEN}}',
          destinationType: "email",
          destinationId: '{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@webex.bot{{end}}',

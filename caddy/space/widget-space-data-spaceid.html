@@ -12,19 +12,18 @@
 
    <title>Space Widget</title>
    <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
+   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
+
 </head>
 
 <body>
 
-   <div style="width: 750px; height: 500px;"
-      data-access-token='{{.Env.ACCESS_TOKEN}}'
-      data-toggle="ciscospark-space" 
-      data-destination-type="spaceId" 
-      data-destination-id='{{.URL.Query.Get "roomId"}}'
-      data-initial-activity="message" 
-   />
+   <div style="width: 750px; height: 500px;" 
+      data-access-token='{{.Env.ACCESS_TOKEN}}' 
+      data-toggle="webex-space"
+      data-destination-type="spaceId" data-destination-id='{{.URL.Query.Get "roomId"}}'
+      data-initial-activity="message" />
 
-   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
 </body>
 
 </html>

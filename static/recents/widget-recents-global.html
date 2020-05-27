@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf8">
 
-  <title>Recents Widget</title>
-  <link rel="stylesheet" href="https://code.s4d.io/widget-recents/production/main.css">
-  <style type="text/css">
-    .toast {
-      font-family: "Source Sans Pro", Hkelvetica, sans-serif;
-      font-size: 120%;
-    }
-  </style>
+<head>
+   <meta charset="utf8">
+
+   <title>Recents Widget</title>
+   <link rel="stylesheet" href="https://code.s4d.io/widget-recents/production/main.css">
+   <style type="text/css">
+      .toast {
+         font-family: "Source Sans Pro", Hkelvetica, sans-serif;
+         font-size: 120%;
+      }
+   </style>
+
+   <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
 </head>
 
 <body>
 
-  <div style="width: 300px; height: 500px;" 
-    id="recents" 
-    />
+   <div style="width: 300px; height: 500px;" id="recents" />
+   <script>
 
-  <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
-  <script>
+      // Use specified token if set as a query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token') || 'PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN';
 
-    // Initialize a new widget
-    const widgetElement = document.getElementById('recents');
-    ciscospark.widget(widgetElement).recentsWidget({
-      accessToken: "PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN",
-      onEvent: callback
-    });
+      // Initialize a new widget
+      const widgetElement = document.getElementById('recents');
+      webex.widget(widgetElement).recentsWidget({
+         accessToken: token,
+         onEvent: callback
+      });
 
-    function callback(type, event) {
-      if (type === 'rooms:selected') {
-        console.log("room " + event.data.id + " was selected");
+      function callback(type, event) {
+         if (type === 'rooms:selected') {
+            console.log("room " + event.data.id + " was selected");
+         }
       }
-    }
-  </script>
+   </script>
 
 </body>
 </html>

@@ -12,21 +12,21 @@
 
    <title>Space Widget</title>
    <link rel="stylesheet" href="https://code.s4d.io/widget-space/latest/main.css">
+   <script src="https://code.s4d.io/widget-space/latest/bundle.js"></script>
 </head>
 
 <body>
 
    <div style="width: 750px; height: 500px;" id="space" />
 
-   <script src="https://code.s4d.io/widget-space/latest/bundle.js"></script>
    <script>
 
       // Inject a new 'Space' widget with selected room
       const widgetElement = document.getElementById('space');
-      ciscospark.widget(widgetElement).spaceWidget({
+      webex.widget(widgetElement).spaceWidget({
          accessToken: '{{.Env.ACCESS_TOKEN}}',
          destinationType: "email",
-         destinationId: '{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}CiscoDevNet@webex.bot{{end}}',
+         destinationId: '{{if .URL.Query.Get "email"}}{{.URL.Query.Get "email"}}{{else}}toEnglish@webex.bot{{end}}',
          activities: { "files": true, "message": true, "people": true },
          initialActivity: 'message'
       });

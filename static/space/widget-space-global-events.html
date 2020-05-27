@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf8">
 
-  <title>Space Widget</title>
-  <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-  <style type="text/css">
-    .toast {
-      font-family: "Source Sans Pro", Helvetica, sans-serif;
-      font-size: 120%;
-    }
-  </style>
+<head>
+   <meta charset="utf8">
+
+   <title>Space Widget</title>
+
+   <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
+   <!-- Remove comment to use the latest compiled and minified CSS instead of the production/stable bundle
+  <link rel="stylesheet" href="https://code.s4d.io/widget-space/latest/main.css">
+  -->
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+   <style type="text/css">
+      .toast {
+         font-family: "Source Sans Pro", Helvetica, sans-serif;
+         font-size: 120%;
+      }
+   </style>
+
+   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 
 <body>
 
-  <div id="space" style="width: 7500px; height: 500px;" />
+   <div id="space" style="width: 750px; height: 500px;" />
 
-  <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <script>
+   <script>
 
-    // Inject a new 'Space' widget with selected room
-    const widgetElement = document.getElementById('space');
-    ciscospark.widget(widgetElement).spaceWidget({
-      accessToken: 'PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN',
-      destinationType: "email",
-      destinationId: 'CiscoDevNet@webex.bot',
-      activities: { "files": true, "meet": true, "message": true, "people": true },
-      initialActivity: 'message',
-      secondaryActivitiesFullWidth: false,
-      onEvent: callback
-   });
+      // Use specified token if set as a query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token') || 'PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN';
 
-   function callback(type, event) {
-      if (type !== "rooms:read") {
-         console.log("new event: " + type);
-         toastr.info('Event Received', type);
+      // Inject a new 'Space' widget with selected room
+      const widgetElement = document.getElementById('space');
+      webex.widget(widgetElement).spaceWidget({
+         accessToken: token,
+         destinationType: "email",
+         destinationId: 'toEnglish@webex.bot',
+         activities: { "files": true, "meet": true, "message": true, "people": true },
+         initialActivity: 'message',
+         secondaryActivitiesFullWidth: false,
+         onEvent: callback
+      });
+
+      function callback(type, event) {
+         if (type !== "rooms:read") {
+            console.log("new event: " + type);
+            toastr.info('Event Received', type);
+         }
       }
-   }
 
-  </script>
+   </script>
 
 </body>
+
 </html>

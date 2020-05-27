@@ -2,66 +2,69 @@
 <html>
 
 <head>
-  <meta charset="utf8">
+   <meta charset="utf8">
 
-  <title>Better Together: Recents and Space</title>
-  <link rel="stylesheet" href="https://code.s4d.io/widget-recents/production/main.css">
-  <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
-  <link rel="stylesheet" href="hide-menu.css">
+   <title>Better Together: Recents and Space</title>
+   <link rel="stylesheet" href="https://code.s4d.io/widget-recents/production/main.css">
+   <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css">
+   <link rel="stylesheet" href="hide-menu.css">
 
+   <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
+   <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
 </head>
 
 <body>
 
-  <div>
-    <div id="recents" style="width: 300px; height: 500px; float:left" />
-  </div>
-  <div>
-    <div id="space" style="width: 750px; height: 500px; margin-left: 300px" />
-  </div>
+   <div>
+      <div id="recents" style="width: 300px; height: 500px; float:left" />
+   </div>
+   <div>
+      <div id="space" style="width: 750px; height: 500px; margin-left: 300px" />
+   </div>
 
-  <script src="https://code.s4d.io/widget-recents/production/bundle.js"></script>
-  <script>
-    accessToken = "PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN";
-    var widgetElement = document.getElementById('recents');
-    var widgetElement2 = document.getElementById('space');
+   <script>
+      // Use specified token if set as a query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token') || 'PASTE_YOUR_WEBEX_TEAMS_ACCESS_TOKEN';
 
-    // Init a new widget
-    ciscospark.widget(widgetElement).recentsWidget({
-      accessToken: accessToken,
-      onEvent: callback
-    });
-
-    function callback(type, event) {
-      if (type !== "rooms:selected") {
-        console.log("new event: " + type);
-        toastr.info('Event Received', type);
-        return;
-      }
-
-      var selectedRoom = event.data.id;
-      console.log("room " + selectedRoom + " was selected");
-
+      var widgetElement = document.getElementById('recents');
       var widgetElement2 = document.getElementById('space');
 
-      try {
-        ciscospark.widget(widgetElement2).remove().then(function (removed) {
-          if (removed) {
-            console.log('removed!');
-          }
-        })
-      } catch (err) { }
-
       // Init a new widget
-      ciscospark.widget(widgetElement2).spaceWidget({
-        accessToken: accessToken,
-        spaceId: selectedRoom
+      webex.widget(widgetElement).recentsWidget({
+         accessToken: token,
+         onEvent: callback
       });
-    }
 
-  </script>
+      function callback(type, event) {
+         if (type !== "rooms:selected") {
+            console.log("new event: " + type);
+            toastr.info('Event Received', type);
+            return;
+         }
 
-  <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
+         var selectedRoom = event.data.id;
+         console.log("room " + selectedRoom + " was selected");
+
+         var widgetElement2 = document.getElementById('space');
+
+         try {
+            WebGLRenderingContext.widget(widgetElement2).remove().then(function (removed) {
+               if (removed) {
+                  console.log('removed!');
+               }
+            })
+         } catch (err) { }
+
+         // Init a new widget
+         webex.widget(widgetElement2).spaceWidget({
+            accessToken: token,
+            spaceId: selectedRoom
+         });
+      }
+
+   </script>
 
 </body>
+
 </html>

@@ -1,5 +1,11 @@
 # CHANGES
 
+- **May 27th, 2020**
+
+* updated examples to latest Webex Teams widget release (new webex naming conventions)
+* added the possiblity to specify the access token as a query parameter
+* note: I only tested static examples, not dynamic ones with caddy
+
 - **Nov 5th, 2019**
 
 * updated examples with latest 'Space' Widget, including 'destinationType' and 'destinationId' attributes
